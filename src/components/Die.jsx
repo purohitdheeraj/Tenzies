@@ -1,7 +1,8 @@
 import React from "react";
 
-function Die({ value }) {
-	const [isHeld, setIsHeld] = React.useState(false);
+function Die({ value, isHeld }) {
+	// lifting this state to DiceBoard <--- Parent Component
+	// const [isHeld, setIsHeld] = React.useState(false);
 
 	const styles = {
 		background: isHeld ? `#59E391` : ``,
@@ -9,7 +10,7 @@ function Die({ value }) {
 
 	return (
 		<div
-			onClick={() => setIsHeld((prev) => !prev)}
+			// onClick={() => setIsHeld((prev) => !prev)}
 			className="die"
 			style={styles}
 		>

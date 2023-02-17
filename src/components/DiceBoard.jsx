@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Die from "./Die";
-import { nanoid } from "nanoid";
 import {
 	getAllDice,
-	getRandomDiceNumber,
+	getRandomDiceObj,
 } from "./diceHelpers";
 
 function DiceBoard() {
@@ -12,7 +11,11 @@ function DiceBoard() {
 	);
 
 	let diceElements = diceArr.map((dice) => (
-		<Die key={nanoid()} value={dice} />
+		<Die
+			key={dice.id}
+			value={dice.number}
+			isHeld={dice.isHeld}
+		/>
 	));
 
 	function rollDice() {
