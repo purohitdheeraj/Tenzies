@@ -10,11 +10,23 @@ function DiceBoard() {
 		getAllDice()
 	);
 
+	// not a helper, its setter function
+	function selectDice(id) {
+		setDiceArr((oldArr) => {
+			return oldArr.map((dice) =>
+				dice.id === id
+					? { ...dice, isHeld: !dice.isHeld }
+					: dice
+			);
+		});
+	}
+
 	let diceElements = diceArr.map((dice) => (
 		<Die
 			key={dice.id}
 			value={dice.number}
 			isHeld={dice.isHeld}
+			selectDice={() => selectDice(dice.id)}
 		/>
 	));
 

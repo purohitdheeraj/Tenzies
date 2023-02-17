@@ -1,20 +1,20 @@
 import React from "react";
 
-function Die({ value, isHeld }) {
+function Die(props) {
 	// lifting this state to DiceBoard <--- Parent Component
 	// const [isHeld, setIsHeld] = React.useState(false);
 
 	const styles = {
-		background: isHeld ? `#59E391` : ``,
+		background: props.isHeld ? `#59E391` : ``,
 	};
 
 	return (
 		<div
-			// onClick={() => setIsHeld((prev) => !prev)}
+			onClick={props.selectDice}
 			className="die"
 			style={styles}
 		>
-			{value}
+			{props.value}
 		</div>
 	);
 }
