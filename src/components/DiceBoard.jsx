@@ -5,7 +5,7 @@ import {
 	getAllDice,
 	getRandomDiceObj,
 } from "./diceHelpers";
-import ReactAudioPlayer from "react-audio-player";
+// import ReactAudioPlayer from "react-audio-player";
 // import cheers from "../assets/cheers.mp3";
 
 function DiceBoard() {
@@ -82,10 +82,10 @@ function DiceBoard() {
 			{tenzies && (
 				<>
 					<Confetti />
-					<ReactAudioPlayer
+					{/* <ReactAudioPlayer
 						src="/assets/cheers.mp3"
 						autoPlay
-					/>
+					/> */}
 				</>
 			)}
 		</>
