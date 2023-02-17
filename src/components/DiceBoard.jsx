@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Die from "./Die";
+import { nanoid } from "nanoid";
+import {
+	getAllDice,
+	getRandomDiceNumber,
+} from "./diceHelpers";
 
 function DiceBoard() {
+	const [diceArr, setDiceArr] = useState(() =>
+		getAllDice()
+	);
+
+	let diceElements = diceArr.map((dice) => (
+		<Die key={nanoid()} value={dice} />
+	));
+
+	function rollDice() {
+		setDiceArr(getAllDice());
+	}
+
 	return (
 		<>
 			<article className="tenzies">
-				<Die value={1} />
-				<Die value={2} />
-				<Die value={3} />
-				<Die value={4} />
-				<Die value={5} />
-				<Die value={6} />
-				<Die value={1} />
-				<Die value={2} />
-				<Die value={3} />
-				<Die value={4} />
+				{diceElements}
 			</article>
-			<button className="btn-roll btn">Roll</button>
+			<button
+				onClick={rollDice}
+				className="btn-roll btn"
+			>
+				Roll
+			</button>
 		</>
 	);
 }
