@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
+import Confetti from "react-confetti";
+import useSound from "use-sound";
 import Die from "./Die";
 import {
 	getAllDice,
 	getRandomDiceObj,
 } from "./diceHelpers";
+import cheers from "../assets/cheers.mp3";
 
 function DiceBoard() {
+	const [play, { stop }] = useSound(cheers);
+
 	const [diceArr, setDiceArr] = useState(() =>
 		getAllDice()
 	);
@@ -26,6 +31,7 @@ function DiceBoard() {
 
 		if (allValues && allHeldTrue) {
 			setTenzies(true);
+			play();
 		}
 	}, [diceArr]);
 
@@ -44,6 +50,7 @@ function DiceBoard() {
 		if (tenzies) {
 			setDiceArr(getAllDice());
 			setTenzies(false);
+			stop();
 		}
 
 		setDiceArr((oldArr) => {
@@ -76,7 +83,7 @@ function DiceBoard() {
 			>
 				{tenzies ? "New Game" : "Roll"}
 			</button>
-			{tenzies && <div>You Won!</div>}
+			{tenzies && <Confetti />}
 		</>
 	);
 }
